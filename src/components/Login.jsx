@@ -2,6 +2,11 @@ import Header from "./Header";
 import { LOGIN_URL } from "../utlis/Images";
 import { useRef, useState } from "react";
 import { checkValidData } from "../utlis/Validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utlis/Firebase";
 
 const Login = () => {
   const [isSigninForm, setisSigninForm] = useState(true);
@@ -9,19 +14,44 @@ const Login = () => {
 
   const email = useRef(null);
   const password = useRef(null);
-  const number = useRef(null);
 
   const toggleSigninForm = () => {
     setisSigninForm(!isSigninForm);
+    setErrorMessage(null);
   };
 
   const handleButtonClick = () => {
-    const msg = checkValidData(
-      email.current.value,
-      password.current.value,
-      number.current.value
-    );
+    const msg = checkValidData(email.current.value, password.current.value);
     setErrorMessage(msg);
+
+    if (msg) return;
+
+    if (!isSigninForm) {
+      // Sign up
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          console.log("Signed up user:", userCredential.user);
+        })
+        .catch((error) => {
+          setErrorMessage(error.code + " - " + error.message);
+        });
+    } else {
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          console.log("Signed in user:", userCredential.user);
+        })
+        .catch((error) => {
+          setErrorMessage(error.code + " - " + error.message);
+        });
+    }
   };
 
   return (
@@ -41,14 +71,6 @@ const Login = () => {
           <input
             type="text"
             placeholder="Full Name"
-            className="p-4 my-4 w-full bg-gray-700"
-          />
-        )}
-        {!isSigninForm && (
-          <input
-            ref={number}
-            type="tel"
-            placeholder="Mobile Number"
             className="p-4 my-4 w-full bg-gray-700"
           />
         )}
