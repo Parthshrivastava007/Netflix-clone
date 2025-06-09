@@ -5,14 +5,19 @@ import { checkValidData } from "../utlis/Validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utlis/Firebase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utlis/UserSlice";
 
 const Login = () => {
   const [isSigninForm, setisSigninForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
 
@@ -35,7 +40,19 @@ const Login = () => {
       )
         .then((userCredential) => {
           console.log("Signed up user:", userCredential.user);
-          navigate("/browse");
+          updateProfile(userCredential.user, {
+            displayName: name.current.value,
+          })
+            .then(() => {
+              const { uid, email, displayName } = auth.currentUser;
+              dispatch(
+                addUser({ uid: uid, email: email, displayName: displayName })
+              );
+              navigate("/browse");
+            })
+            .catch((error) => {
+              setErrorMessage(error.message);
+            });
         })
         .catch((error) => {
           setErrorMessage(error.code + " - " + error.message);
@@ -71,6 +88,7 @@ const Login = () => {
         </h1>
         {!isSigninForm && (
           <input
+            ref={name}
             type="text"
             placeholder="Full Name"
             className="p-4 my-4 w-full bg-gray-700"
