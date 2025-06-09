@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import { LOGO_URL, PROFILE_LOGO_URL } from "../utlis/Images";
+import { LOGO_URL, PROFILE_LOGO_URL } from "../utlis/Constants";
 import { auth } from "../utlis/Firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,7 +20,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    const unsubscribe =  onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName } = user;
         dispatch(

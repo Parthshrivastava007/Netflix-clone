@@ -1,5 +1,5 @@
 import Header from "./Header";
-import { LOGIN_URL } from "../utlis/Images";
+import { LOGIN_URL } from "../utlis/Constants";
 import { useRef, useState } from "react";
 import { checkValidData } from "../utlis/Validate";
 import {
