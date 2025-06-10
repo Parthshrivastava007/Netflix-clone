@@ -6,7 +6,8 @@ export const PROFILE_LOGO_URL =
   "https://occ-0-2464-3646.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABXYofKdCJceEP7pdxcEZ9wt80GsxEyXIbnG_QM8znksNz3JexvRbDLr0_AcNKr2SJtT-MLr1eCOA-e7xlDHsx4Jmmsi5HL8.png?r=1d4";
 export const PLAY_BUTTON =
   "https://cdn-icons-png.flaticon.com/128/260/260446.png";
-
+export const INFO_ICON =
+  "https://cdn-icons-png.flaticon.com/128/9195/9195785.png";
 export const API_OPTIONS = {
   method: "GET",
   headers: {
