@@ -8,6 +8,8 @@ export const PLAY_BUTTON =
   "https://cdn-icons-png.flaticon.com/128/260/260446.png";
 export const INFO_ICON =
   "https://cdn-icons-png.flaticon.com/128/9195/9195785.png";
+export const IMG_CDN =
+  "https://image.tmdb.org/t/p/w500/";
 export const API_OPTIONS = {
   method: "GET",
   headers: {
