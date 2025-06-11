@@ -8,8 +8,7 @@ export const PLAY_BUTTON =
   "https://cdn-icons-png.flaticon.com/128/260/260446.png";
 export const INFO_ICON =
   "https://cdn-icons-png.flaticon.com/128/9195/9195785.png";
-export const IMG_CDN =
-  "https://image.tmdb.org/t/p/w500/";
+export const IMG_CDN = "https://image.tmdb.org/t/p/w500/";
 export const API_OPTIONS = {
   method: "GET",
   headers: {
@@ -18,3 +17,25 @@ export const API_OPTIONS = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNzdkYzdhZTgwMDIxNWYxNTlmZmZjNWZkMDk4Y2M1NiIsIm5iZiI6MTc0OTQ5NDUwNC40MjQsInN1YiI6IjY4NDcyYWU4YjI2MmJkNzVlNmZkNjFkYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8FdULeGHmURc85vSWtXnjB0gIK_rQwe206fycoJAtfQ",
   },
 };
+export const SUPPORTED_LANGUAGES = [
+  {
+    id: 1,
+    identifier: "en",
+    name: "English",
+  },
+  {
+    id: 2,
+    identifier: "hindi",
+    name: "Hindi",
+  },
+  {
+    id: 3,
+    identifier: "esp",
+    name: "Spanish",
+  },
+  {
+    id: 4,
+    identifier: "fre",
+    name: "French",
+  },
+];
