@@ -41,5 +41,3 @@ export const SUPPORTED_LANGUAGES = [
   },
 ];
 
-export const OPENAI_KEY =
-  "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";
