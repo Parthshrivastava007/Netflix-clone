@@ -9,6 +9,7 @@ export const PLAY_BUTTON =
 export const INFO_ICON =
   "https://cdn-icons-png.flaticon.com/128/9195/9195785.png";
 export const IMG_CDN = "https://image.tmdb.org/t/p/w500/";
+
 export const API_OPTIONS = {
   method: "GET",
   headers: {
@@ -39,3 +40,6 @@ export const SUPPORTED_LANGUAGES = [
     name: "French",
   },
 ];
+
+export const OPENAI_KEY =
+  "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";
